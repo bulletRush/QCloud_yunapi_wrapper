@@ -87,3 +87,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Private config
+example/config.py
+
+# IntelliJ idea
+.idea/*
+
