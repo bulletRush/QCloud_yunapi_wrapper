@@ -1,0 +1,11 @@
+# 忽略*.pyc文件
+*.pyc
+example/config.py
+.idea/deployment.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/yunapi_wrapper.iml
+python2.7.exe.stackdump

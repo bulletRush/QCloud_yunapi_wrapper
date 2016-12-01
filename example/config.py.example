@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from qcloudsdk import (
+    QCloudEngine, Region,
+)
+
+engine = QCloudEngine(
+    secret_id='<your secret id here>',
+    secret_key='<your secret key here',
+    region=Region.GZ,  # change this to your default region
+    debug=False,  # print log or not
+    timeout=10,  # wait ten seconds
+)
