@@ -5,8 +5,8 @@ from qcloudsdk import (
 )
 
 engine = QCloudEngine(
-    secret_id='<your secret id here>',
-    secret_key='<your secret key here',
+    secret_id='<your secret id here>',  # please remove angle brackets!
+    secret_key='<your secret key here>',  # # please remove angle brackets!
     region=Region.GZ,  # change this to your default region
     debug=False,  # print log or not
     timeout=10,  # wait ten seconds

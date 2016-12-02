@@ -2,7 +2,7 @@
 
 ## 使用步骤
 
-1. 设置`PYTHONPATH`
+### 设置`PYTHONPATH`
 
 ```shell
 YUN_API_WRAPPER_PATH=<your path here>
@@ -11,7 +11,7 @@ export PYTHONPATH='${YUN_API_WRAPPER_PATH}：${YUN_API_WRAPPER_PATH}/thirdparty:
 
 或者直接运行`init.sh`
 
-2. 修改示例程序
+### 修改示例程序
 
 ```shell
 mv example/config.py.example example/config.py
