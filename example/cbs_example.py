@@ -14,7 +14,8 @@ if rsp.code == 0:
     for item in rsp.data["storageSet"]:
         print "\t", item["storageId"], item["storageType"], item["storageSize"]
 else:
-    print "describe cbs storages failed({0}): {1}".format(rsp.code, rsp.message)
+    # print rsp
+    print "some error happened: {0}, {1}, {2}".format(rsp.code, rsp.codeDesc, rsp.message.encode('utf-8'))
 
 
 # change region to shanghai and list all disk under project '1'
