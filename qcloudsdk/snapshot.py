@@ -12,11 +12,12 @@ class CbsSnapShotInterface(enum.Enum):
     MODIFY_SNAP_SHOT = "ModifySnapshot"
     INQUIRY_SNAP_PRICE = "InquirySnapshotPrice"
     # ASP
-    DESCRIBE_AUTO_SNAPSHOT_POLICYS = "DescribeAutoSnapshotPolicys"
-    DELETE_AUTO_SNAPSHOT_POLICYS = "DeleteAutoSnapshotPolicys"
+    DESCRIBE_AUTO_SNAPSHOT_POLICYS = "DescribeAutoSnapshotPolicies"
+    DELETE_AUTO_SNAPSHOT_POLICYS = "DeleteAutoSnapshotPolicies"
     MODIFY_AUTO_SNAPSHOT_POLICY = "ModifyAutoSnapshotPolicy"
     BIND_AUTO_SNAPSHOT_POLICY = "BindAutoSnapshotPolicy"
     UNBIND_AUTO_SNAPSHOT_POLICY = "UnbindAutoSnapshotPolicy"
+    DESCRIBE_CBS_ASSOCIATED_ASP = "DescribeCbsAssociatedAsp"
 
 
 class SnapModule(BaseModule):
@@ -33,7 +34,11 @@ class SnapModule(BaseModule):
         return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.APPLY_SNAPSHOT, locals())
 
     def describe_snapshots(
-            self, storageIds=None,
+            self, storageIds=None, snapshotIds=None, searchValue=None,
+            offset=None, limit=None,
+            zoneId=None, projectIds=None, projectId=None,
+            diskType=None, storageTypes=None, snapshotStatus=None,
+            order=None, orderBy=None,
     ):
         return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.DESCRIBE_SNAPSHOTS, locals())
 
@@ -76,3 +81,8 @@ class SnapModule(BaseModule):
             self, cbsIds, aspId,
     ):
         return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.UNBIND_AUTO_SNAPSHOT_POLICY, locals())
+
+    def describe_cbs_associated_asp(
+            self, storageId,
+    ):
+        return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.DESCRIBE_CBS_ASSOCIATED_ASP, locals())

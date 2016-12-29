@@ -15,9 +15,20 @@ class SnapshotTestCase(unittest.TestCase):
         print self.engine.snap.inquiry_snapshot_price(
             storageSize=100, zoneId=100003, period=2,
         )
+        print self.engine.snap.inquiry_snapshot_price(
+            storageSize=200, zoneId=100003, period=2,
+        )
 
-    def test_describe_snap(self):
-        print self.engine.snap.describe_snapshots()
+    def xtest_describe_snap(self):
+        print self.engine.snap.describe_snapshots(
+            snapshotIds=["snap-l82l72gl", "snap-ptqv2xmn"],
+        )
+
+    def xtest_describe_cbs_associated_asp(self):
+        print self.engine.snap.describe_cbs_associated_asp("disk-7nzio4jq")
+
+    def xtest_describe_asp(self):
+        print self.engine.snap.describe_auto_snapshot_policys()
 
 
 if __name__ == '__main__':
