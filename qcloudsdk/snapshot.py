@@ -12,8 +12,9 @@ class CbsSnapShotInterface(enum.Enum):
     MODIFY_SNAP_SHOT = "ModifySnapshot"
     INQUIRY_SNAP_PRICE = "InquirySnapshotPrice"
     # ASP
-    DESCRIBE_AUTO_SNAPSHOT_POLICYS = "DescribeAutoSnapshotPolicies"
-    DELETE_AUTO_SNAPSHOT_POLICYS = "DeleteAutoSnapshotPolicies"
+    CREATE_AUTO_SNAPSHOT_POLICY = "CreateAutoSnapshotPolicy"
+    DESCRIBE_AUTO_SNAPSHOT_POLICIES = "DescribeAutoSnapshotPolicies"
+    DELETE_AUTO_SNAPSHOT_POLICIES = "DeleteAutoSnapshotPolicies"
     MODIFY_AUTO_SNAPSHOT_POLICY = "ModifyAutoSnapshotPolicy"
     BIND_AUTO_SNAPSHOT_POLICY = "BindAutoSnapshotPolicy"
     UNBIND_AUTO_SNAPSHOT_POLICY = "UnbindAutoSnapshotPolicy"
@@ -57,15 +58,20 @@ class SnapModule(BaseModule):
     ):
         return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.INQUIRY_SNAP_PRICE, locals())
 
-    def describe_auto_snapshot_policys(
+    def create_auto_snapshot_policies(
+            self, policy, aspName=None, isPermanent=None, isActivated=None, retentionDays=None,
+    ):
+        return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.CREATE_AUTO_SNAPSHOT_POLICY, locals())
+
+    def describe_auto_snapshot_policies(
             self,
     ):
-        return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.DESCRIBE_AUTO_SNAPSHOT_POLICYS, locals())
+        return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.DESCRIBE_AUTO_SNAPSHOT_POLICIES, locals())
 
-    def delete_auto_snapshot_policys(
+    def delete_auto_snapshot_policies(
             self, aspIds,
     ):
-        return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.DELETE_AUTO_SNAPSHOT_POLICYS, locals())
+        return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.DELETE_AUTO_SNAPSHOT_POLICIES, locals())
 
     def modify_auto_snapshot_policy(
             self, aspId, policy=None, isActivated=None, aspName=None,
