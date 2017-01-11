@@ -79,12 +79,12 @@ class SnapModule(BaseModule):
         return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.MODIFY_AUTO_SNAPSHOT_POLICY, locals())
 
     def bind_auto_snapshot_policy(
-            self, aspId, cbsIds,
+            self, aspId, storageIdList,
     ):
         return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.BIND_AUTO_SNAPSHOT_POLICY, locals())
 
     def unbind_auto_snapshot_policy(
-            self, cbsIds, aspId,
+            self, storageIdList, aspId,
     ):
         return self.engine.call(self.MODULE_NAME, CbsSnapShotInterface.UNBIND_AUTO_SNAPSHOT_POLICY, locals())
 
