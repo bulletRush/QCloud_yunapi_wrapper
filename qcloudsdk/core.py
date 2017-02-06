@@ -15,6 +15,7 @@ from snapshot import SnapModule
 from ccr import CcrModule
 from base import BaseModule
 from cvm import CvmModule
+from trade import TradeModule
 warnings.filterwarnings("ignore")
 
 VERSION = 'SDK_PYTHON_barrettwu_0.1'
@@ -80,6 +81,7 @@ class QCloudEngine(object):
         self.snap = SnapModule(self)
         self.ccr = CcrModule(self)
         self.cvm = CvmModule(self)
+        self.trade = TradeModule(self)
 
     def with_secret(self, secret_id, secret_key):
         self.secret_id = secret_id

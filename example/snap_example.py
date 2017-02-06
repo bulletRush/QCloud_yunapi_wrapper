@@ -11,7 +11,7 @@ class SnapshotTestCase(unittest.TestCase):
         self.engine = engine.with_region(Region.BJ)
         self.asp_id_ca = "asp-63nkvfj6"
         self.asp_id_bj = "asp-63nkviwi"
-        self.all_policy = [{"dayOfWeek": ["0", "1", "2", "3", "4", "5", "6"], "hour": ["15"]}]
+        self.all_policy = [{"dayOfWeek": ["0", "1", "2", "3", "4", "5", "6"], "hour": ["12"]}]
 
     def tearDown(self):
         print("{0} END TEST: {1} {2}\n".format('#' * 20, self._testMethodName, '#' * 20))
@@ -43,9 +43,9 @@ class SnapshotTestCase(unittest.TestCase):
             aspId=self.asp_id_bj, storageIdList=["disk-ezwe9uq7", "disk-16gvmvet"]
         )
 
-    def xtest_modify_asp(self):
+    def test_modify_asp(self):
         print self.engine.snap.modify_auto_snapshot_policy(
-            aspId=self.asp_id_bj, policy=self.all_policy,
+            aspId=self.asp_id_bj, policy=self.all_policy, isActivated=1,
         )
 
     def xtest_unbound_cbs(self):
