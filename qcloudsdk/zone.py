@@ -13,6 +13,19 @@ class Region(enum.Enum):
     SG = "sg"
     SHJR = "shjr"
     SZJR = "szjr"
+    USW = "usw"
+
+
+class RegionInt(enum.Enum):
+    GZ = 1
+    SH = 4
+    HK = 5
+    CA = 6
+    SHJR = 7
+    BJ = 8
+    SG = 9
+    SZJR = 11
+    USW = 15
 
 
 class ZoneId(enum.Enum):
@@ -24,9 +37,11 @@ class ZoneId(enum.Enum):
     CA1 = 400001
     SHJR1 = 700001
     BJ1 = 800001
+    BJ2 = 800002
     SG1 = 900001
     SZJR1 = 110001
     SZJR2 = 110002
+    USW1 = 150001
 
 
 class ZoneModule(BaseModule):

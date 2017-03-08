@@ -16,6 +16,7 @@ from ccr import CcrModule
 from base import BaseModule
 from cvm import CvmModule
 from trade import TradeModule
+from monitor import MonitorModule
 warnings.filterwarnings("ignore")
 
 VERSION = 'SDK_PYTHON_barrettwu_0.1'
@@ -82,6 +83,7 @@ class QCloudEngine(object):
         self.ccr = CcrModule(self)
         self.cvm = CvmModule(self)
         self.trade = TradeModule(self)
+        self.monitor = MonitorModule(self)
 
     def with_secret(self, secret_id, secret_key):
         self.secret_id = secret_id

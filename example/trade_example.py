@@ -15,7 +15,7 @@ class TradeTestCase(unittest.TestCase):
     def test_set_auto_renew(self):
         self.engine.with_region(Region.BJ)
         print self.engine.trade.set_renew_flag(
-            region=8, uuids=["disk-60d0s2eb"], type=ResourceType.CBS, autoRenewFlag=1,
+            region=8, uuids=["disk-mod36xfv"], type=ResourceType.CBS, autoRenewFlag=0,
         )
 
 
