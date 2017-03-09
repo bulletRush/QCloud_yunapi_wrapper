@@ -18,9 +18,10 @@ class MonitorTestCase(unittest.TestCase):
         )
 
     def test_get_monitor_data(self):
+        print self.engine.with_region(Region.SH)
         print self.engine.monitor.get_monitor_data(
-            namespace=MonitorNamespace.CVM, metricName=MonitorMetricName.DISK_READ_TRAFFIC,
-            dimensions=[{"name": "unInstanceId", "value": "ins-13s7bco9"}]
+            namespace=MonitorNamespace.CVM, metricName=MonitorMetricName.DISK_WRITE_TRAFFIC,
+            dimensions=[{"name": "unInstanceId", "value": "ins-1rr36wrt"}, {"diskname": "vda1"}],
         )
 
 if __name__ == '__main__':

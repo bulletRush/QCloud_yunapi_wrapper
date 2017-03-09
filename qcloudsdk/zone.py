@@ -33,6 +33,7 @@ class ZoneId(enum.Enum):
     GZ2 = 100002
     GZ3 = 100003
     SH1 = 200001
+    SH2 = 200002
     HK1 = 300001
     CA1 = 400001
     SHJR1 = 700001
