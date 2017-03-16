@@ -141,10 +141,19 @@ class QCloudEngine(object):
         return component + ".api.qcloud.com/v2/index.php"
 
     def call(self, component, action, params, rsp=None):
+        """
+        :param component:
+        :param enum.Enum action:
+        :param params:
+        :param rsp:
+        :return:
+        """
         component_url = self.generate_component_url(component)
         params = self.fix_params(params)
         if self.debug:
             print '**** params: {0}\n'.format(params)
+        if isinstance(action, enum.Enum):
+            action = action.value
         params['Action'] = action
         params['Signature'] = self.generate_signature(component_url, params)
         url = 'https://{0}'.format(component_url)

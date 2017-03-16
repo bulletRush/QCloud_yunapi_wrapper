@@ -15,7 +15,7 @@ class CbsTestCase(unittest.TestCase):
     def test_create(self):
         print self.engine.cbs.create_cbs_storages(
             zoneId=ZoneId.SZJR2, goodsNum=1, period=1,
-            storageType=CbsStorageType.SSD, storageSize=250,
+            storageType=CbsStorageType.SSD, storageSize=50,
         )
 
     def xtest_resize(self):
