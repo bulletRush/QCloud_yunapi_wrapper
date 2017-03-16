@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding=utf-8 -*-
 import enum
-from base import BaseModule
+from base import BaseModule, BaseMonitorDimension
 
 
 class MonitorNamespace(enum.Enum):
@@ -22,6 +22,11 @@ class MonitorInterface(enum.Enum):
     GET_MONITOR_DATA = "GetMonitorData"
 
 
+class DiskUsageDimension(BaseMonitorDimension):
+    def __init__(self, unInstanceId, diskname):
+        super(DiskUsageDimension, self).__init__(locals())
+
+
 class MonitorModule(BaseModule):
     MODULE_NAME = "monitor"
 
@@ -34,3 +39,7 @@ class MonitorModule(BaseModule):
         self, namespace, metricName, dimensions, period=None, startTime=None, endTime=None,
     ):
         return self.engine.call(self.MODULE_NAME, MonitorInterface.GET_MONITOR_DATA, locals())
+
+
+if __name__ == '__main__':
+    x = DiskUsageDimension(unInstanceId="ins-dxxx", diskname="aaa")

@@ -26,6 +26,9 @@ class SnapshotTestCase(unittest.TestCase):
             snapshotIds=["snap-l82l72gl", "snap-ptqv2xmn"],
         )
 
+    def test_delete_snap(self):
+        print self.engine.snap.delete_snapshot(snapshotIds=["snap-newe8k5y"])
+
     def xtest_describe_cbs_associated_asp(self):
         print self.engine.snap.describe_cbs_associated_asp("disk-7nzio4jq")
 
@@ -43,7 +46,7 @@ class SnapshotTestCase(unittest.TestCase):
             aspId=self.asp_id_bj, storageIdList=["disk-ezwe9uq7", "disk-16gvmvet"]
         )
 
-    def test_modify_asp(self):
+    def xtest_modify_asp(self):
         print self.engine.snap.modify_auto_snapshot_policy(
             aspId=self.asp_id_bj, policy=self.all_policy, isActivated=1,
         )

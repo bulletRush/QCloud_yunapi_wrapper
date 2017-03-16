@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import unittest
-from qcloudsdk import Region, MonitorNamespace, MonitorMetricName
+from qcloudsdk import Region, MonitorNamespace, MonitorMetricName, DiskUsageDimension
 from config import engine
 
 
@@ -21,7 +21,7 @@ class MonitorTestCase(unittest.TestCase):
         print self.engine.with_region(Region.SH)
         print self.engine.monitor.get_monitor_data(
             namespace=MonitorNamespace.CVM, metricName=MonitorMetricName.DISK_WRITE_TRAFFIC,
-            dimensions=[{"name": "unInstanceId", "value": "ins-1rr36wrt"}, {"diskname": "vda1"}],
+            dimensions=DiskUsageDimension(unInstanceId="ins-1rr36wrt", diskname="vda1")
         )
 
 if __name__ == '__main__':

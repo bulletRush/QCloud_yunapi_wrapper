@@ -10,6 +10,7 @@ import random
 import json
 import requests
 import warnings
+from base import BaseMonitorDimension
 from cbs import CbsModule
 from snapshot import SnapModule
 from ccr import CcrModule
@@ -46,11 +47,15 @@ def _fix_params(prefix, params):
         return d
     if isinstance(params, BaseModule):
         return d
-    if not isinstance(params, (tuple, list, dict)):
+    if not isinstance(params, (tuple, list, dict, BaseMonitorDimension)):
         if isinstance(params, enum.Enum):
             params = params.value
         d[prefix] = params
         return d
+
+    if isinstance(params, BaseMonitorDimension):
+        params = params.to_list()
+
     if isinstance(params, (list, tuple)):
         for idx, item in enumerate(params):
             if prefix:
@@ -59,6 +64,7 @@ def _fix_params(prefix, params):
                 key = "{0}".format(idx)
             d.update(_fix_params(key, item))
         return d
+
     if isinstance(params, dict):
         for k, v in params.iteritems():
             if prefix:

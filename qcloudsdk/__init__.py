@@ -3,5 +3,5 @@ from cbs import CbsStorageType, CbsPayMode, CbsInquiryPriceType, CbsModule, CbsI
 from image import ImageId, ImageType
 from zone import ZoneId, Region
 from trade import ResourceType
-from monitor import MonitorNamespace, MonitorMetricName
+from monitor import MonitorNamespace, MonitorMetricName, DiskUsageDimension
 from core import QCloudEngine, Response
