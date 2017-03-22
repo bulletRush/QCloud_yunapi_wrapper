@@ -7,6 +7,9 @@ class BaseModule(object):
 
 
 class BaseMonitorDimension(object):
+    METRIC_NAME = None
+    NAME_SPACE = None
+
     def __init__(self, kwargs):
         kwargs.pop("self", 0)
         self.kwargs = kwargs

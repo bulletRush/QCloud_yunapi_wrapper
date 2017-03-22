@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 import unittest
-from qcloudsdk import Region, MonitorNamespace, MonitorMetricName, DiskUsageDimension
+from qcloudsdk import (
+    Region, MonitorNamespace, MonitorMetricName, DiskUsageDimension, DiskReadTrafficDimension,
+    DiskIoAwaitDimension, DiskWriteTrafficDimension, DiskCheckFailDimension, DiskSvctmDimension,
+    DiskUtilDimension,
+)
 from config import engine
 
 
@@ -17,12 +21,30 @@ class MonitorTestCase(unittest.TestCase):
             namespace=MonitorNamespace.CVM, metricName=MonitorMetricName.DISK_READ_TRAFFIC,
         )
 
-    def test_get_monitor_data(self):
+    def test_get_cvm_monitor_data(self):
         print self.engine.with_region(Region.SH)
-        print self.engine.monitor.get_monitor_data(
-            namespace=MonitorNamespace.CVM, metricName=MonitorMetricName.DISK_WRITE_TRAFFIC,
-            dimensions=DiskUsageDimension(unInstanceId="ins-1rr36wrt", diskname="vda1")
-        )
+        cvm_instance_id = "ins-1rr36wrt"
+        disk = "root"
+        disk_usage_d = DiskUsageDimension(unInstanceId=cvm_instance_id, diskname="vda1")
+        disk_read_d = DiskReadTrafficDimension(unInstanceId=cvm_instance_id, disk=disk)
+        disk_write_d = DiskWriteTrafficDimension(unInstanceId=cvm_instance_id, disk=disk)
+        disk_await_d = DiskIoAwaitDimension(unInstanceId=cvm_instance_id, disk=disk)
+        disk_svctm_d = DiskSvctmDimension(unInstanceId=cvm_instance_id, disk=disk)
+        disk_util_d = DiskUtilDimension(unInstanceId=cvm_instance_id, disk=disk)
+
+        for d in (disk_usage_d, disk_read_d, disk_write_d, disk_await_d, disk_svctm_d, disk_util_d):
+            print self.engine.monitor.get_monitor_data(dimensions=d)
+            print "\n" * 2
+            print "/" * 40
+
+    def test_get_cbs_monitor_data(self):
+        cvm_instance_id = "ins-1rr36wrt"
+        disk = "root"
+        io_faild_d = DiskCheckFailDimension(unInstanceId=cvm_instance_id, disk=disk)
+        for d in (io_faild_d,):
+            print self.engine.monitor.get_monitor_data(dimensions=d)
+            print "\n" * 2
+            print "/" * 40
 
 if __name__ == '__main__':
     unittest.main()
