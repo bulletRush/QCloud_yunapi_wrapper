@@ -30,7 +30,6 @@ mv example/config.py.example example/config.py
 ### 查询磁盘使用率和iostat数据时，disk和diskname参数的区别？
 
 * disk指的是你的磁盘，目前对于系统盘传入root，随子机购买的数据盘传入data；独立云盘传入云盘实例ID（即disk-xxxx）
-* diskname指的是你的磁盘的分区
-* 通过`cvm.describe_instance_disk_names`查询diskname
+* diskname指的是你的磁盘的分区，可以通过`cvm.describe_instance_disk_names`查询diskname，示例见`example/cvm_example.py`
 
 
