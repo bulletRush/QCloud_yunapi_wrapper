@@ -2,7 +2,7 @@
 import unittest
 from qcloudsdk import (
     Region, MonitorNamespace, MonitorMetricName, DiskUsageDimension, DiskReadTrafficDimension,
-    DiskIoAwaitDimension, DiskWriteTrafficDimension, DiskCheckFailDimension, DiskSvctmDimension,
+    DiskIoAwaitDimension, DiskWriteTrafficDimension, DiskSvctmDimension,
     DiskUtilDimension,
 )
 from config import engine

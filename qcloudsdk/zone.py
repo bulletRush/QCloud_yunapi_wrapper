@@ -79,7 +79,11 @@ REGION_MAP = {
 }
 
 for r in all_region_list:
-    REGION_MAP[r.region.lower()] = (r, )
+    if isinstance(r.region, enum.Enum):
+        s = r.region.value().lower()
+    else:
+        s = r.region.lower()
+    REGION_MAP[s] = (r, )
 
 
 def get_region_list(l="all"):
