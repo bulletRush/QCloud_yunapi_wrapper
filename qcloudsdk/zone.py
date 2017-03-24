@@ -80,7 +80,7 @@ REGION_MAP = {
 
 for r in all_region_list:
     if isinstance(r.region, enum.Enum):
-        s = r.region.value().lower()
+        s = r.region.value.lower()
     else:
         s = r.region.lower()
     REGION_MAP[s] = (r, )
