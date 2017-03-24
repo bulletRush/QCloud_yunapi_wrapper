@@ -3,7 +3,7 @@ import unittest
 from qcloudsdk import (
     Region, MonitorNamespace, MonitorMetricName, DiskUsageDimension, DiskReadTrafficDimension,
     DiskIoAwaitDimension, DiskWriteTrafficDimension, DiskSvctmDimension,
-    DiskUtilDimension,
+    DiskUtilDimension, DiskReadIopsDimension, DiskWriteIopsDimension,
 )
 from config import engine
 
@@ -31,8 +31,12 @@ class MonitorTestCase(unittest.TestCase):
         disk_await_d = DiskIoAwaitDimension(unInstanceId=cvm_instance_id, disk=disk)
         disk_svctm_d = DiskSvctmDimension(unInstanceId=cvm_instance_id, disk=disk)
         disk_util_d = DiskUtilDimension(unInstanceId=cvm_instance_id, disk=disk)
-
-        for d in (disk_usage_d, disk_read_d, disk_write_d, disk_await_d, disk_svctm_d, disk_util_d):
+        disk_read_iops_d = DiskReadIopsDimension(unInstanceId=cvm_instance_id, disk=disk)
+        disk_write_iops_d = DiskWriteIopsDimension(unInstanceId=cvm_instance_id, disk=disk)
+        for d in (
+            disk_usage_d, disk_await_d, disk_svctm_d, disk_util_d,
+            disk_read_d, disk_write_d, disk_read_iops_d, disk_write_iops_d,
+        ):
             print self.engine.monitor.get_monitor_data(dimensions=d)
             print "\n" * 2
             print "/" * 40

@@ -12,13 +12,14 @@ class MonitorNamespace(enum.Enum):
 
 
 class MonitorMetricName(enum.Enum):
-    DISK_USAGE = "disk_usage"
     DISK_READ_TRAFFIC = "disk_read_traffic"
     DISK_WRITE_TRAFFIC = "disk_write_traffic"
-    DISK_IO_AWAIT = "disk_io_await"
-    DISK_CHECK_FAIL = "check_fail"
+    DISK_READ_IOPS = "disk_read_iops"
+    DISK_WRITE_IOPS = "disk_write_iops"
+    DISK_AWAIT = "disk_await"
     DISK_SVCTM = "disk_svctm"
     DISK_UTIL = "disk_util"
+    DISK_USAGE = "disk_usage"
 
 
 class MonitorInterface(enum.Enum):
@@ -50,8 +51,24 @@ class DiskWriteTrafficDimension(BaseMonitorDimension):
         super(DiskWriteTrafficDimension, self).__init__(locals())
 
 
+class DiskReadIopsDimension(BaseMonitorDimension):
+    METRIC_NAME = MonitorMetricName.DISK_READ_IOPS
+    NAME_SPACE = MonitorNamespace.CVM
+
+    def __init__(self, unInstanceId, disk):
+        super(DiskReadIopsDimension, self).__init__(locals())
+
+
+class DiskWriteIopsDimension(BaseMonitorDimension):
+    METRIC_NAME = MonitorMetricName.DISK_WRITE_IOPS
+    NAME_SPACE = MonitorNamespace.CVM
+
+    def __init__(self, unInstanceId, disk):
+        super(DiskWriteIopsDimension, self).__init__(locals())
+
+
 class DiskIoAwaitDimension(BaseMonitorDimension):
-    METRIC_NAME = MonitorMetricName.DISK_IO_AWAIT
+    METRIC_NAME = MonitorMetricName.DISK_AWAIT
     NAME_SPACE = MonitorNamespace.CVM
 
     def __init__(self, unInstanceId, disk):

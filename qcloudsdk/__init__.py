@@ -7,6 +7,7 @@ from monitor import (
     MonitorNamespace, MonitorMetricName,
     DiskUsageDimension, DiskIoAwaitDimension,
     DiskReadTrafficDimension, DiskWriteTrafficDimension,
-    DiskSvctmDimension, DiskUtilDimension
+    DiskSvctmDimension, DiskUtilDimension,
+    DiskReadIopsDimension, DiskWriteIopsDimension,
 )
 from core import QCloudEngine, Response
