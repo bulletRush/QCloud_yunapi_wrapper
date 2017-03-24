@@ -47,3 +47,47 @@ class ZoneId(enum.Enum):
 
 class ZoneModule(BaseModule):
     MODULE_NAME = "cvm"
+
+
+class RegionConfig(object):
+    def __init__(self, s, id_, zone_id_list):
+        self.region = s
+        self.region_id = id_
+        self.zone_id_list = zone_id_list
+
+
+gz = RegionConfig(Region.GZ, RegionInt.GZ, (ZoneId.GZ1, ZoneId.GZ2, ZoneId.GZ3))
+sh = RegionConfig(Region.SH, RegionInt.SH, (ZoneId.SH1, ZoneId.SH2, ))
+bj = RegionConfig(Region.BJ, RegionInt.BJ, (ZoneId.BJ1, ZoneId.BJ2, ))
+shjr = RegionConfig(Region.SHJR, RegionInt.SHJR, (ZoneId.SHJR1, ))
+szjr = RegionConfig(Region.SZJR, RegionInt.SZJR, (ZoneId.SZJR1, ZoneId.SZJR2, ))
+ca = RegionConfig(Region.CA, RegionInt.CA, (ZoneId.CA1, ))
+sg = RegionConfig(Region.SG, RegionInt.SG, (ZoneId.SG1, ))
+hk = RegionConfig(Region.HK, RegionInt.HK, (ZoneId.HK1, ))
+usw = RegionConfig(Region.USW, RegionInt.USW, (ZoneId.USW1, ))
+
+big_region_list = (gz, sh, bj)
+small_region_list = (hk, ca, sg, usw)
+jr_region_list = (szjr, shjr)
+all_region_list = (gz, sh, bj, hk, ca, sg, usw, szjr, shjr)
+
+REGION_MAP = {
+    "all": all_region_list,
+    "big": big_region_list,
+    "small": small_region_list,
+    "jr": jr_region_list,
+}
+
+for r in all_region_list:
+    REGION_MAP[r.region.lower()] = (r, )
+
+
+def get_region_list(l="all"):
+    if l in REGION_MAP:
+        return REGION_MAP[l]
+    else:
+        l = l.split(",")
+        region_list = []
+        for i in l:
+            region_list.append(REGION_MAP[i])
+        return region_list

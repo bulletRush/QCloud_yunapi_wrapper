@@ -37,14 +37,6 @@ class MonitorTestCase(unittest.TestCase):
             print "\n" * 2
             print "/" * 40
 
-    def test_get_cbs_monitor_data(self):
-        cvm_instance_id = "ins-1rr36wrt"
-        disk = "root"
-        io_faild_d = DiskCheckFailDimension(unInstanceId=cvm_instance_id, disk=disk)
-        for d in (io_faild_d,):
-            print self.engine.monitor.get_monitor_data(dimensions=d)
-            print "\n" * 2
-            print "/" * 40
 
 if __name__ == '__main__':
     unittest.main()

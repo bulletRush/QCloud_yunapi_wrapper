@@ -58,14 +58,6 @@ class DiskIoAwaitDimension(BaseMonitorDimension):
         super(DiskIoAwaitDimension, self).__init__(locals())
 
 
-class DiskCheckFailDimension(BaseMonitorDimension):
-    METRIC_NAME = MonitorMetricName.DISK_CHECK_FAIL
-    NAME_SPACE = MonitorNamespace.CBS
-
-    def __init__(self, unInstanceId, disk):
-        super(DiskCheckFailDimension, self).__init__(locals())
-
-
 class DiskSvctmDimension(BaseMonitorDimension):
     METRIC_NAME = MonitorMetricName.DISK_SVCTM
     NAME_SPACE = MonitorNamespace.CVM

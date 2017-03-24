@@ -10,6 +10,7 @@ class CvmInterface(enum.Enum):
     RUN_INSTANCES_HOUR = "RunInstancesHour"
     INQUIRY_INSTANCE_PRICE = "InquiryInstancePrice"
     RESET_INSTANCES = "ResetInstances"
+    DESCRIBE_INSTANCE_DISK_NAMES = "DescribeInstanceDiskNames"
 
 
 class CvmModule(BaseModule):
@@ -46,3 +47,8 @@ class CvmModule(BaseModule):
             needSecurityAgent=None, needMonitorAgent=None, rootSize=None,
     ):
         return self.engine.call(self.MODULE_NAME, CvmInterface.RESET_INSTANCES, locals())
+
+    def describe_instance_disk_names(
+            self, instanceId
+    ):
+        return self.engine.call(self.MODULE_NAME, CvmInterface.DESCRIBE_INSTANCE_DISK_NAMES, locals())
